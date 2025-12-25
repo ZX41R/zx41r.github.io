@@ -2,26 +2,31 @@
 
 - type: github
   icon: "fab fa-github"
-
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
+  url: "https://github.com/ZX41R"
 
 - type: email
   icon: "fas fa-envelope"
+  url: "mailto:su6r1t@gmail.com"
   noblank: true # open link in current tab
+
+- type: linkedin
+  icon: "fab fa-linkedin" # icons powered by <https://fontawesome.com/>
+  url: "https://www.linkedin.com/in/hakmi-zohir-87b896299"
+
+- type: medium
+  icon: "fab fa-medium"
+  url: "https://medium.com/@Zx41R"
 
 - type: rss
   icon: "fas fa-rss"
-  noblank: true
+  noblank: true_data/share.yml
+
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
 #   icon: 'fab fa-mastodon'   # icons powered by <https://fontawesome.com/>
 #   url:  ''                  # Fill with your Mastodon account page, rel="me" will be applied for verification
 #
-# - type: linkedin
-#   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
-#   url:  ''                  # Fill with your Linkedin homepage
 #
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
