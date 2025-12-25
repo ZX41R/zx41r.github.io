@@ -4,6 +4,12 @@ source "https://rubygems.org"
 
 gem "jekyll-theme-chirpy", "~> 7.4", ">= 7.4.1"
 
+# Plugins referenced in _config.yml
+gem "jekyll-feed", "~> 0.17"
+gem "jekyll-sitemap", "~> 1.4"
+gem "jekyll-seo-tag", "~> 2.8"
+gem "jekyll-paginate", "~> 1.1"
+
 gem "html-proofer", "~> 5.0", group: :test
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do
