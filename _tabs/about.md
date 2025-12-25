@@ -4,7 +4,7 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-## Hi, I'm 𝙽!𝙻
+## Hi, I'm Zohir (aka 𝙽!𝙻)
 
 Welcome to my personal archive.
 
@@ -132,21 +132,3 @@ You can find me here:
 - GitHub: https://github.com/ZX41R
 - LinkedIn: https://www.linkedin.com/in/hakmi-zohir-87b896299
 - Medium: https://medium.com/@Zx41R
-
----
-
-## One last thing
-
-If you’re reading this because you’re also getting into reversing, OS internals, or malware analysis:
-
-- Stay curious.
-- Build labs.
-- Break things safely.
-- Take notes.
-- Learn to love the debugger.
-
-This blog is my way of doing exactly that.
-
-<small>
-If you want me to include a short “quick facts” section (location, main OS, favorite tools, CTF platforms, languages), tell me what you want listed and I’ll add it.
-</small>
