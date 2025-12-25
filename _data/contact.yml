@@ -1,16 +1,16 @@
 #  The contact options.
 
 - type: github
-  icon: "fab fa-github"
+  icon: "fab fa-github fa-fw"
   url: "https://github.com/ZX41R"
 
 - type: email
-  icon: "fas fa-envelope"
+  icon: "fas fa-envelope fa-fw"
   url: "mailto:su6r1t@gmail.com"
   noblank: true # open link in current tab
 
 - type: medium
-  icon: "fab fa-medium"
+  icon: "fab fa-medium fa-fw"
   url: "https://medium.com/@Zx41R"
 # Uncomment and complete the url below to enable more contact options
 #
