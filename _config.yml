@@ -14,7 +14,7 @@ timezone: Africa/Algiers
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: "𝙽!𝙻" # the main title
+title: "𝙽!𝙻 | Home" # the main title
 
 tagline: "Security researcher — CTFs, OS internals, RE, malware, 4n6" # it will display as the subtitle
 
