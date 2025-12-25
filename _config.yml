@@ -11,6 +11,12 @@ lang: en
 # Change to your timezone › https://zones.arilyn.cc
 timezone: Africa/Algiers
 
+# Core plugins (GitHub Pages-safe)
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
