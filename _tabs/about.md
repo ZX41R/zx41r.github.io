@@ -41,18 +41,13 @@ I like breaking software apart and rebuilding understanding from the bottom up:
 - Extracting protocols and file formats
 - Recovering data structures and intent from “just bytes”
 
-Tools change; the mindset doesn’t.
+
 
 ### OS internals
 
-I’m interested in how the system really behaves:
+I’m interested in how the system really behaves—not the clean diagram version, but the version you meet at 3AM when something crashes, something deadlocks, or something “works on my machine” and nowhere else. I like following the trail from a symptom to a cause: watching processes and threads change state, tracking handles and loaded modules, and digging through memory until the story makes sense. Most of the time it’s not glamorous; it’s just you, a debugger, and a lot of tiny details. But that moment when the crash finally *explains itself* is exactly why I keep coming back.
 
-- Processes/threads, handles, modules
-- Memory layout, paging concepts, allocations
-- Debugging at user-mode and kernel-adjacent boundaries
-- Why things crash (and what the crash is trying to tell you)
 
-This is where “security” starts making sense.
 
 ### Memory forensics (4n6)
 
