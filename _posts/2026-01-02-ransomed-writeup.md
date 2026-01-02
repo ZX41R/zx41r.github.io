@@ -307,10 +307,6 @@ At this stage, allocation alone does **not** prove injection —
 but it confirms that **runtime code generation/execution** is happening.
 
 This finding fits naturally into the execution chain we are reconstructing and prepares us for the next critical step: **memory permissions**.
----
-
-LET’S GO 😤🔥
-We keep the same pace, same clarity, same **analyst-first** style.
 
 ---
 
