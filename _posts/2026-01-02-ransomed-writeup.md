@@ -8,13 +8,13 @@ description: "Dynamic analysis and memory forensics: stack-strings, API resoluti
 
 ## Overview
 
-**Platform:** CyberDefenders
-
-**Category:** Malware Analysis
-
-**Difficulty:** Hard
-
-**Focus:** Dynamic Analysis · Process Hollowing · String Obfuscation · API Resolution
+|                |                                                                            |
+| :------------- | :------------------------------------------------------------------------- |
+| **Platform**   | CyberDefenders                                                             |
+| **Category**   | Malware Analysis                                                           |
+| **Difficulty** | Hard                                                                       |
+| **Focus**      | Dynamic Analysis · Process Hollowing · String Obfuscation · API Resolution |
+| **Lab Link**   | [Ransomed](https://cyberdefenders.org/blueteam-ctf-challenges/ransomed/)   |
 
 The **Ransomed** challenge is a malware analysis lab that simulates a real-world incident where suspicious memory activity is detected on a workstation. Initial telemetry points to an unknown executable exhibiting **high entropy**, a common indicator of packing or obfuscation.
 
