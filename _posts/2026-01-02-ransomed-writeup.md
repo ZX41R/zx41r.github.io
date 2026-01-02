@@ -6,16 +6,15 @@ tags: [process-hollowing, shellcode, x32dbg, scdbg, ida]
 description: "Dynamic analysis and memory forensics: stack-strings, API resolution, shellcode and process hollowing."
 ---
 
-# Ransomed — Malware Analysis Walkthrough
+## Overview
 
 **Platform:** CyberDefenders
+
 **Category:** Malware Analysis
+
 **Difficulty:** Hard
+
 **Focus:** Dynamic Analysis · Process Hollowing · String Obfuscation · API Resolution
-
----
-
-## Overview
 
 The **Ransomed** challenge is a malware analysis lab that simulates a real-world incident where suspicious memory activity is detected on a workstation. Initial telemetry points to an unknown executable exhibiting **high entropy**, a common indicator of packing or obfuscation.
 
@@ -921,3 +920,10 @@ This confirms the final stage of the **process hollowing** technique and complet
 
 ---
 
+## Conclusion
+
+The Ransomed sample illustrates a classic multi-stage loader used in real malware: 
+packed on disk, builds essential strings at runtime, allocates executable memory, 
+executes shellcode, and compromises another process using process hollowing. 
+By stepping through its behavior with x32dbg and validating observed API calls 
+with scdbg, we reconstructed the full execution chain with confidence.
