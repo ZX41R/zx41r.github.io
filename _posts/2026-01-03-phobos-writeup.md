@@ -1,6 +1,6 @@
 ---
 title: "Phobos Ransomware — Malware Analysis Walkthrough"
-date: 2026-01-04
+date: 2026-01-03
 categories: [Malware Analysis, Reverse Engineering, Writeup]
 tags: [ransomware, phobos, ida-pro, x32dbg, aes-encryption, crc32]
 description: "Deep analysis of Phobos ransomware: encrypted configuration, process termination, persistence mechanisms, and file encryption strategies."
