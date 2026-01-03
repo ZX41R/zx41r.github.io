@@ -8,13 +8,13 @@ description: "Analyze a suspicious executable using VirusTotal and MalwareBazaar
 
 ## Overview
 
-|                |                                                                                      |
-| :------------- | :----------------------------------------------------------------------------------- |
-| **Platform**   | CyberDefenders                                                                       |
-| **Category**   | Threat Intelligence                                                                  |
-| **Difficulty** | Easy                                                                                 |
-| **Focus**      | IOC Extraction · C2 Identification · MITRE ATT&CK Mapping · Malware Classification   |
-| **Lab Link**   | [Red Stealer](https://cyberdefenders.org/blueteam-ctf-challenges/red-stealer/)       |
+|                |                                                                                    |
+| :------------- | :--------------------------------------------------------------------------------- |
+| **Platform**   | CyberDefenders                                                                     |
+| **Category**   | Threat Intelligence                                                                |
+| **Difficulty** | Easy                                                                               |
+| **Focus**      | IOC Extraction · C2 Identification · MITRE ATT&CK Mapping · Malware Classification |
+| **Lab Link**   | [Red Stealer](https://cyberdefenders.org/blueteam-ctf-challenges/red-stealer/)     |
 
 You are part of the **Threat Intelligence team** in the SOC. An executable file has been discovered on a colleague's computer, suspected to be linked to a **Command and Control (C2) server**, indicating a potential malware infection.
 
@@ -114,11 +114,11 @@ _File details showing 62/72 detection rate and filename_
 
 **File Details:**
 
-| Property       | Value                     |
-| -------------- | ------------------------- |
-| Detection      | 62/72 vendors flagged     |
-| Size           | 1.83 MB (1,917,440 bytes) |
-| File Type      | Win32 EXE                 |
+| Property  | Value                     |
+| --------- | ------------------------- |
+| Detection | 62/72 vendors flagged     |
+| Size      | 1.83 MB (1,917,440 bytes) |
+| File Type | Win32 EXE                 |
 
 The file name is:
 
@@ -147,12 +147,12 @@ _History section showing submission timeline_
 
 **Timeline:**
 
-| Event                | Timestamp (UTC)           |
-| -------------------- | ------------------------- |
-| Creation Time        | 2022-05-24 22:49:06       |
-| **First Submission** | **2023-10-06 04:41:50**   |
-| First Seen In Wild   | 2023-10-07 07:20:23       |
-| Last Submission      | 2025-11-07 12:05:39       |
+| Event                | Timestamp (UTC)         |
+| -------------------- | ----------------------- |
+| Creation Time        | 2022-05-24 22:49:06     |
+| **First Submission** | **2023-10-06 04:41:50** |
+| First Seen In Wild   | 2023-10-07 07:20:23     |
+| Last Submission      | 2025-11-07 12:05:39     |
 
 The first submission timestamp is:
 
@@ -181,11 +181,11 @@ _MITRE ATT&CK techniques showing Collection tactics_
 
 **Collection Techniques Identified:**
 
-| Technique ID | Name                    | Description                              |
-| ------------ | ----------------------- | ---------------------------------------- |
-| **T1005**    | Data from Local System  | Collects data stored on local system     |
-| T1056        | Input Capture           | Captures user input (keylogging)         |
-| T1119        | Automated Collection    | Automatically gathers data               |
+| Technique ID | Name                   | Description                          |
+| ------------ | ---------------------- | ------------------------------------ |
+| **T1005**    | Data from Local System | Collects data stored on local system |
+| T1056        | Input Capture          | Captures user input (keylogging)     |
+| T1119        | Automated Collection   | Automatically gathers data           |
 
 The MITRE ATT&CK technique for data collection is:
 
@@ -259,12 +259,12 @@ _IP Traffic showing C2 server at 77.91.124.55:19071_
 
 **IP Traffic Analysis:**
 
-| Protocol | Destination             | Purpose                    |
-| -------- | ----------------------- | -------------------------- |
-| **TCP**  | **77.91.124.55:19071**  | **Command & Control**      |
-| TCP      | 31.13.67.35:443         | www.facebook.com           |
-| TCP      | 13.107.6.158:443        | business.bing.com          |
-| TCP      | 31.13.88.13:443         | static.xx.fbcdn.net        |
+| Protocol | Destination            | Purpose               |
+| -------- | ---------------------- | --------------------- |
+| **TCP**  | **77.91.124.55:19071** | **Command & Control** |
+| TCP      | 31.13.67.35:443        | www.facebook.com      |
+| TCP      | 13.107.6.158:443       | business.bing.com     |
+| TCP      | 31.13.88.13:443        | static.xx.fbcdn.net   |
 
 The C2 IP address and port is:
 
@@ -300,7 +300,7 @@ The C2 IP address and port is:
 Navigate to **MalwareBazaar** and search for the sample hash:
 
 ```
-https://bazaar.abuse.ch/sample/248fcc901aff4e4b4c48c91e4d78a939bf681c9a1bc24addc3551b32768f907b/
+sha256:248fcc901aff4e4b4c48c91e4d78a939bf681c9a1bc24addc3551b32768f907b/
 ```
 
 Scroll down to the **YARA Signatures** section.
@@ -310,11 +310,11 @@ _YARA Signatures section showing detect_Redline_Stealer by Varp0s_
 
 **YARA Rule Details:**
 
-| Property    | Value                    |
-| ----------- | ------------------------ |
-| Rule Name   | detect_Redline_Stealer   |
-| Author      | Varp0s                   |
-| TLP         | CLEAR (publicly shareable) |
+| Property  | Value                      |
+| --------- | -------------------------- |
+| Rule Name | detect_Redline_Stealer     |
+| Author    | Varp0s                     |
+| TLP       | CLEAR (publicly shareable) |
 
 The YARA rule name is:
 
@@ -350,14 +350,14 @@ _ThreatFox showing IOC with RECORDSTEALER alias_
 
 **IOC Information:**
 
-| Property         | Value                  |
-| ---------------- | ---------------------- |
-| IOC              | 77.91.124.55:19071     |
-| IOC Type         | ip:port                |
-| Threat Type      | botnet_cc (C2)         |
-| Malware          | RedLine Stealer        |
-| **Malware Alias**| **RECORDSTEALER**      |
-| Confidence       | 100%                   |
+| Property          | Value              |
+| ----------------- | ------------------ |
+| IOC               | 77.91.124.55:19071 |
+| IOC Type          | ip:port            |
+| Threat Type       | botnet_cc (C2)     |
+| Malware           | RedLine Stealer    |
+| **Malware Alias** | **RECORDSTEALER**  |
+| Confidence        | 100%               |
 
 The malware alias is:
 
@@ -418,12 +418,12 @@ advapi32.dll
 
 This DLL contains critical Windows API functions commonly abused by malware:
 
-| Function                    | Purpose                           |
-| --------------------------- | --------------------------------- |
-| `AdjustTokenPrivileges()`   | Modify security tokens            |
-| `OpenProcessToken()`        | Access process security tokens    |
-| `LookupPrivilegeValue()`    | Query privilege information       |
-| `ImpersonateLoggedOnUser()` | Impersonate user accounts         |
+| Function                    | Purpose                        |
+| --------------------------- | ------------------------------ |
+| `AdjustTokenPrivileges()`   | Modify security tokens         |
+| `OpenProcessToken()`        | Access process security tokens |
+| `LookupPrivilegeValue()`    | Query privilege information    |
+| `ImpersonateLoggedOnUser()` | Impersonate user accounts      |
 
 By monitoring unusual loading or API calls to `advapi32.dll`, security tools can detect privilege escalation attempts.
 
@@ -435,17 +435,17 @@ This investigation successfully identified a **RedLine Stealer** sample (alias: 
 
 ### Summary of Findings
 
-| Question | Finding                                                    |
-| -------- | ---------------------------------------------------------- |
-| Q1       | Microsoft category: `Trojan`                               |
-| Q2       | File name: `Wextract`                                      |
-| Q3       | First submission: `2023-10-06 04:41`                       |
-| Q4       | MITRE ATT&CK Collection: `T1005`                           |
-| Q5       | Social media domain: `facebook.com`                        |
-| Q6       | C2 IP:Port: `77.91.124.55:19071`                           |
-| Q7       | YARA rule: `detect_Redline_Stealer`                        |
-| Q8       | Malware alias: `RECORDSTEALER`                             |
-| Q9       | Privilege escalation DLL: `advapi32.dll`                   |
+| Question | Finding                                  |
+| -------- | ---------------------------------------- |
+| Q1       | Microsoft category: `Trojan`             |
+| Q2       | File name: `Wextract`                    |
+| Q3       | First submission: `2023-10-06 04:41`     |
+| Q4       | MITRE ATT&CK Collection: `T1005`         |
+| Q5       | Social media domain: `facebook.com`      |
+| Q6       | C2 IP:Port: `77.91.124.55:19071`         |
+| Q7       | YARA rule: `detect_Redline_Stealer`      |
+| Q8       | Malware alias: `RECORDSTEALER`           |
+| Q9       | Privilege escalation DLL: `advapi32.dll` |
 
 ### Indicators of Compromise (IOCs)
 
@@ -459,25 +459,11 @@ This investigation successfully identified a **RedLine Stealer** sample (alias: 
 
 **Network Indicators:**
 
-| Type     | Value               |
-| -------- | ------------------- |
-| C2 IP    | `77.91.124.55`      |
-| C2 Port  | `19071`             |
-| Protocol | TCP                 |
+| Type     | Value          |
+| -------- | -------------- |
+| C2 IP    | `77.91.124.55` |
+| C2 Port  | `19071`        |
+| Protocol | TCP            |
 
-### Recommendations
-
-**Immediate Actions:**
-
-1. Block `77.91.124.55:19071` at the firewall
-2. Search for file hash across the environment
-3. Deploy YARA rule `detect_Redline_Stealer`
-
-**Long-term Measures:**
-
-1. Monitor for unusual `advapi32.dll` API calls
-2. Implement EDR detection for RedLine Stealer IOCs
-3. Train users to identify suspicious executables
 
 Through open-source threat intelligence platforms (VirusTotal, MalwareBazaar, ThreatFox), we gathered comprehensive IOCs for the SOC and Incident Response teams to detect, block, and hunt for this threat across the organization.
-
