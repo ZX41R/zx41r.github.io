@@ -1,6 +1,6 @@
 ---
 title: "Phobos Ransomware — Malware Analysis Walkthrough"
-date: 2026-01-03
+date: 2026-01-04
 categories: [Malware Analysis, Reverse Engineering, Writeup]
 tags: [ransomware, phobos, ida-pro, x32dbg, aes-encryption, crc32]
 description: "Deep analysis of Phobos ransomware: encrypted configuration, process termination, persistence mechanisms, and file encryption strategies."
@@ -8,13 +8,13 @@ description: "Deep analysis of Phobos ransomware: encrypted configuration, proce
 
 ## Overview
 
-|                |                                                                                  |
-| :------------- | :------------------------------------------------------------------------------- |
-| **Platform**   | CyberDefenders                                                                   |
-| **Category**   | Malware Analysis                                                                 |
-| **Difficulty** | Hard                                                                             |
+|                |                                                                                 |
+| :------------- | :------------------------------------------------------------------------------ |
+| **Platform**   | CyberDefenders                                                                  |
+| **Category**   | Malware Analysis                                                                |
+| **Difficulty** | Insane                                                                          |
 | **Focus**      | Ransomware · AES Config Decryption · Registry Persistence · Process Termination |
-| **Lab Link**   | [Phobos](https://cyberdefenders.org/blueteam-ctf-challenges/phobos/)             |
+| **Lab Link**   | [Phobos](https://cyberdefenders.org/blueteam-ctf-challenges/phobos/)            |
 
 **Phobos** is a well-known ransomware family that has been active since 2018. This challenge walks through analyzing a real Phobos sample, focusing on its encrypted configuration system, anti-analysis techniques, and encryption methodology.
 
@@ -64,12 +64,12 @@ Malware commonly uses hashing for:
 - **Configuration validation** — ensure encrypted config is intact
 
 Common algorithms to watch for:
-| Algorithm | Characteristics |
-|-----------|-----------------|
-| CRC32 | Lookup table, XOR operations, 32-bit output |
-| MD5 | 128-bit output, complex rounds |
-| djb2 | Simple multiply-add loop, no table |
-| ROR13 | Rotate-right operations |
+| Algorithm | Characteristics                             |
+| --------- | ------------------------------------------- |
+| CRC32     | Lookup table, XOR operations, 32-bit output |
+| MD5       | 128-bit output, complex rounds              |
+| djb2      | Simple multiply-add loop, no table          |
+| ROR13     | Rotate-right operations                     |
 
 ---
 
@@ -93,13 +93,13 @@ int __usercall sub_4085D9@<eax>(int a1@<eax>, _BYTE *a2@<ecx>, int a3)
 
 **Identification markers:**
 
-| Feature | Observation | CRC32 Signature |
-|---------|-------------|-----------------|
-| Initialization | `v3 = ~a1` | ✓ Bitwise NOT |
-| Lookup table | 256 entries at 0x40B000 | ✓ Precomputed table |
-| Core loop | `table[v3 ^ byte] ^ (v3 >> 8)` | ✓ Standard CRC32 |
-| Finalization | `return ~v3` | ✓ Final inversion |
-| Output size | 32-bit integer | ✓ CRC**32** |
+| Feature        | Observation                    | CRC32 Signature     |
+| -------------- | ------------------------------ | ------------------- |
+| Initialization | `v3 = ~a1`                     | ✓ Bitwise NOT       |
+| Lookup table   | 256 entries at 0x40B000        | ✓ Precomputed table |
+| Core loop      | `table[v3 ^ byte] ^ (v3 >> 8)` | ✓ Standard CRC32    |
+| Finalization   | `return ~v3`                   | ✓ Final inversion   |
+| Output size    | 32-bit integer                 | ✓ CRC**32**         |
 
 ![CRC32 Hash Function](/assets/img/posts/phobos/23-crc32-hash-function.png){: .shadow}
 _CRC32 implementation with lookup table_
@@ -180,10 +180,10 @@ This approach reveals all encrypted strings without needing to reverse the encry
 
 The malware stores its configuration in an AES-encrypted blob. I identified two key functions:
 
-| Function | Address | Purpose |
-|----------|---------|---------|
+| Function     | Address    | Purpose                     |
+| ------------ | ---------- | --------------------------- |
 | `sub_4062A6` | 0x004062A6 | Initialize config structure |
-| `sub_406347` | 0x00406347 | Decrypt config entry by ID |
+| `sub_406347` | 0x00406347 | Decrypt config entry by ID  |
 
 ### Dynamic Extraction
 
@@ -371,13 +371,13 @@ _EAX containing decrypted process names: msftesql.exe, sqlagent.exe, sqlbrowser.
 
 **Decrypted process kill list includes:**
 
-| Category | Processes |
-|----------|-----------|
+| Category        | Processes                           |
+| --------------- | ----------------------------------- |
 | **SQL Servers** | msftesql, sqlagent, sqlservr, mysql |
-| **Oracle** | oracle, ocssd, dbsnmp |
-| **Office Apps** | excel, outlook, powerpnt, onenote |
-| **Email** | thunderbird, thebat |
-| **Backup** | sqbcoreservice |
+| **Oracle**      | oracle, ocssd, dbsnmp               |
+| **Office Apps** | excel, outlook, powerpnt, onenote   |
+| **Email**       | thunderbird, thebat                 |
+| **Backup**      | sqbcoreservice                      |
 
 These processes hold **exclusive locks** on database files, documents, and emails. Killing them allows the ransomware to encrypt files that would otherwise be inaccessible.
 
@@ -422,10 +422,10 @@ The **first command** disables Windows Firewall using the modern `netsh advfirew
 
 **Command breakdown:**
 
-| Command | Purpose | Windows Version |
-|---------|---------|-----------------|
-| `netsh advfirewall set currentprofile state off` | Disable firewall | Vista+ |
-| `netsh firewall set opmode mode=disable` | Disable firewall | XP (legacy) |
+| Command                                          | Purpose          | Windows Version |
+| ------------------------------------------------ | ---------------- | --------------- |
+| `netsh advfirewall set currentprofile state off` | Disable firewall | Vista+          |
+| `netsh firewall set opmode mode=disable`         | Disable firewall | XP (legacy)     |
 
 The malware includes both commands for **maximum compatibility** across Windows versions.
 
@@ -487,10 +487,10 @@ This function:
 
 **Persistence locations:**
 
-| Registry Key | Scope |
-|--------------|-------|
+| Registry Key                                         | Scope                      |
+| ---------------------------------------------------- | -------------------------- |
 | `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` | All users (requires admin) |
-| `HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` | Current user only |
+| `HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run` | Current user only          |
 
 By writing to **both** locations, the malware ensures persistence regardless of privilege level.
 
@@ -524,13 +524,13 @@ Examining the import table reveals **WINHTTP.dll** imports:
 ![WinHTTP Imports](/assets/img/posts/phobos/18-winhttp-imports.png){: .shadow}
 _WINHTTP imports: WinHttpOpen, WinHttpConnect, WinHttpSendRequest..._
 
-| Import | Purpose |
-|--------|---------|
-| `WinHttpOpen` | Initialize WinHTTP |
-| `WinHttpConnect` | Connect to server |
-| `WinHttpOpenRequest` | Create HTTP request |
-| `WinHttpSendRequest` | Send request |
-| `WinHttpReceiveResponse` | Receive response |
+| Import                   | Purpose             |
+| ------------------------ | ------------------- |
+| `WinHttpOpen`            | Initialize WinHTTP  |
+| `WinHttpConnect`         | Connect to server   |
+| `WinHttpOpenRequest`     | Create HTTP request |
+| `WinHttpSendRequest`     | Send request        |
+| `WinHttpReceiveResponse` | Receive response    |
 
 All `WinHttp*` functions = **HTTP protocol**.
 
@@ -641,11 +641,11 @@ v7 = (a5 & 1) != 0 || v10.QuadPart < 0x180000uLL
    : sub_408C42(...);   // Large file: PARTIAL encryption
 ```
 
-| Value | Format |
-|-------|--------|
-| `0x180000` | Hexadecimal |
-| `1572864` | Decimal |
-| `1.5 MB` | Human readable |
+| Value      | Format         |
+| ---------- | -------------- |
+| `0x180000` | Hexadecimal    |
+| `1572864`  | Decimal        |
+| `1.5 MB`   | Human readable |
 
 **Why 1.5 MB?**
 - Files under 1.5 MB are encrypted entirely — ensuring complete destruction
@@ -659,19 +659,19 @@ v7 = (a5 & 1) != 0 || v10.QuadPart < 0x180000uLL
 
 ## Summary
 
-| Question | Answer |
-|----------|--------|
-| Q1 - Hashing Algorithm | `CRC32` |
-| Q2 - .cdata Checksum | `0xD55F8833` |
-| Q3 - Malware Version | `v2.9.1` |
-| Q4 - Masqueraded DLL | `ole32.dll` |
-| Q5 - First API Called | `CreateProcessW` |
-| Q6 - Process List Decrypt Address | `0x004022FB` |
-| Q7 - Security Disable Command | `netsh advfirewall set currentprofile state off` |
-| Q8 - Persistence Function | `0x00401236` |
-| Q9 - C2 Protocol | `HTTP` |
-| Q10 - Drive Monitor Thread | `0x00401CC5` |
-| Q11 - File Size Threshold | `1572864` |
+| Question                          | Answer                                           |
+| --------------------------------- | ------------------------------------------------ |
+| Q1 - Hashing Algorithm            | `CRC32`                                          |
+| Q2 - .cdata Checksum              | `0xD55F8833`                                     |
+| Q3 - Malware Version              | `v2.9.1`                                         |
+| Q4 - Masqueraded DLL              | `ole32.dll`                                      |
+| Q5 - First API Called             | `CreateProcessW`                                 |
+| Q6 - Process List Decrypt Address | `0x004022FB`                                     |
+| Q7 - Security Disable Command     | `netsh advfirewall set currentprofile state off` |
+| Q8 - Persistence Function         | `0x00401236`                                     |
+| Q9 - C2 Protocol                  | `HTTP`                                           |
+| Q10 - Drive Monitor Thread        | `0x00401CC5`                                     |
+| Q11 - File Size Threshold         | `1572864`                                        |
 
 ---
 
